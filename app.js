@@ -879,3 +879,67 @@ const calculateTotalBalance = users => {
 		return total + user.balance;
 	}, 0);
 };
+
+// toSorted
+
+const releaseDates = [2016, 1967, 2008, 1984, 1973, 2012, 1997];
+const authors = [
+	'Tanith Lee',
+	'Bernard Cornwell',
+	'Robert Sheckley',
+	'Fyodor Dostoevsky',
+];
+
+const ascendingReleaseDates = releaseDates.toSorted();
+
+const alphabeticalAuthors = authors.toSorted();
+
+const ascendingReleaseDate = releaseDates.toSorted((a, b) => a - b);
+
+const descendingReleaseDate = releaseDates.toSorted((a, b) => b - a);
+
+// toSorted localeCompare
+
+const students = ['Jacob', 'Artemis', 'Solomon', 'Adrian', 'Kai', 'Ganymede'];
+
+const inAlphabetOrder = students.toSorted((a, b) => a.localeCompare(b));
+console.log(inAlphabetOrder); // [ "Adrian", "Artemis", "Ganymede", "Jacob", "Kai", "Solomon" ]
+
+const inReversedOrder = students.toSorted((a, b) => b.localeCompare(a));
+console.log(inReversedOrder); // [ "Solomon", "Kai", "Jacob", "Ganymede", "Artemis", "Adrian" ]
+
+const authorsInAlphabetOrder = authors.toSorted((a, b) => a.localeCompare(b));
+
+const authorsInReversedOrder = authors.toSorted((a, b) => b.localeCompare(a));
+
+const sortedByAuthorName = books.toSorted((firstAuthor, secondAuthor) =>
+	firstAuthor.author.localeCompare(secondAuthor.author)
+);
+
+const sortedByReversedAuthorName = books.toSorted((firstAuthor, secondAuthor) =>
+	secondAuthor.author.localeCompare(firstAuthor.author)
+);
+
+const sortedByAscendingRating = books.toSorted(
+	(firstRating, secondRating) => firstRating.rating - secondRating.rating
+);
+
+const sortedByDescentingRating = books.toSorted(
+	(firstRating, secondRating) => secondRating.rating - firstRating.rating
+);
+
+// Method chains
+
+const uniqueSortedCourses = students
+	.flatMap(student => student.courses)
+	.filter((course, index, array) => array.indexOf(course) === index)
+	.toSorted((a, b) => a.localeCompare(b));
+
+console.log(uniqueSortedCourses); // ["biology", "science", "literature", "mathematics", "physics"]
+
+const MIN_BOOK_RATING = 8;
+
+const names = books
+	.filter(book => book.rating > MIN_BOOK_RATING)
+	.map(book => book.author)
+	.toSorted((a, b) => a.localeCompare(b));
