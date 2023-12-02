@@ -943,3 +943,181 @@ const names = books
 	.filter(book => book.rating > MIN_BOOK_RATING)
 	.map(book => book.author)
 	.toSorted((a, b) => a.localeCompare(b));
+
+// OOP
+
+const pizzaPalace = {
+	pizzas: ['Supercheese', 'Smoked', 'Four meats'],
+	checkPizza(pizzaName) {
+		return this.pizzas.includes(pizzaName);
+	},
+	order(pizzaName) {
+		const isPizzaAvailable = this.checkPizza(pizzaName);
+
+		if (!isPizzaAvailable) {
+			return `Sorry, there is no pizza named «${pizzaName}»`;
+		}
+
+		return `Order accepted, preparing «${pizzaName}» pizza`;
+	},
+};
+
+console.log(pizzaPalace.order('Smoked'));
+
+//call
+function greet(str) {
+	console.log(`${str}, ${this.username}, your room is ${this.room}!`);
+}
+
+const mango = {
+	username: 'Mango',
+	room: 27,
+};
+
+const poly = {
+	username: 'Poly',
+	room: 191,
+};
+
+greet.call(mango, 'Welcome'); // "Welcome, Mango, your room is 27!"
+greet.call(poly, 'Aloha'); // "Aloha, Poly, your room is 191!"
+
+//apply
+
+greet.apply(mango, ['Welcome']); // "Welcome, Mango, your room is 27!"
+greet.apply(poly, ['Aloha']); // "Aloha, Poly, your room is 191!"
+
+//bind
+
+const customer = {
+	firstName: 'Jacob',
+	lastName: 'Mercer',
+	getFullName() {
+		return `${this.firstName} ${this.lastName}`;
+	},
+};
+
+function makeMessage(callback) {
+	const username = callback();
+	console.log(`Processing an application from ${username}`);
+}
+
+makeMessage(customer.getFullName.bind(customer)); // "Processing an application from Jacob Mercer"
+
+// [[Prototype]]
+
+// const parent = {
+// 	name: 'Stacey',
+// 	surname: 'Moore',
+// 	age: 54,
+// 	heritage: 'Irish',
+// };
+
+// const child = Object.create(parent);
+// child.name = 'Jason';
+// child.age = 27;
+
+const ancestor = {
+	name: 'Paul',
+	age: 83,
+	surname: 'Dawson',
+	heritage: 'Irish',
+};
+
+const parent = Object.create(ancestor);
+parent.name = 'Stacey';
+parent.surname = 'Moore';
+parent.age = 54;
+
+const child = Object.create(parent);
+child.name = 'Jason';
+child.age = 27;
+
+// Class
+
+class Car {
+	constructor({ brand, model, price }) {
+		this.brand = brand;
+		this.model = model;
+		this.price = price;
+	}
+
+	getPrice() {
+		return this.price;
+	}
+
+	changePrice(newPrice) {
+		this.price = newPrice;
+	}
+}
+
+// Privat
+class Car {
+	#brand;
+
+	constructor({ brand, model, price }) {
+		this.#brand = brand;
+		this.model = model;
+		this.price = price;
+	}
+
+	getPrice() {
+		return this.price;
+	}
+
+	changePrice(newPrice) {
+		this.price = newPrice;
+	}
+
+	getBrand() {
+		return this.#brand;
+	}
+
+	changeBrand(newBrand) {
+		this.#brand = newBrand;
+	}
+}
+
+// Privat metod
+
+class User {
+	name;
+	#email;
+
+	constructor({ name, email }) {
+		this.name = name;
+		this.#email = email;
+	}
+
+	// Публічний метод для отримання електронної пошти
+	getEmail() {
+		return this.#email;
+	}
+
+	// Публічний метод для зміни електронної пошти
+	changeEmail(newEmail) {
+		if (this.#validateEmail(newEmail)) {
+			this.#email = newEmail;
+		} else {
+			console.log('Invalid email format');
+		}
+	}
+
+	// Приватний метод для валідації електронної пошти
+	#validateEmail(email) {
+		return email.includes('@');
+	}
+}
+
+const mangoU = new User({
+	name: 'Mango',
+	email: 'mango@mail.com',
+});
+
+// Спробуємо змінити електронну пошту
+mangoU.changeEmail('newmail.com'); // "Invalid email format"
+mangoU.changeEmail('new@mail.com');
+console.log(mango.getEmail()); // "new@mail.com"
+
+// Прямий виклик приватного методу ззовні призведе до помилки
+mangoU.#validateEmail('test'); // Помилка
