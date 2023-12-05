@@ -1120,4 +1120,193 @@ mangoU.changeEmail('new@mail.com');
 console.log(mango.getEmail()); // "new@mail.com"
 
 // Прямий виклик приватного методу ззовні призведе до помилки
-mangoU.#validateEmail('test'); // Помилка
+// mangoU.#validateEmail('test'); // Помилка
+
+// get & set
+class Car {
+	#brand;
+	#model;
+	#price;
+
+	constructor({ brand, model, price }) {
+		this.#brand = brand;
+		this.#model = model;
+		this.#price = price;
+	}
+
+	get brand() {
+		return this.#brand;
+	}
+
+	set brand(newBrand) {
+		this.#brand = newBrand;
+	}
+
+	get model() {
+		return this.#model;
+	}
+
+	set model(newModel) {
+		this.#model = newModel;
+	}
+
+	get price() {
+		return this.#price;
+	}
+
+	set price(newPrice) {
+		this.#price = newPrice;
+	}
+}
+
+class Car {
+	static maxPrice = 50000;
+
+	#price;
+
+	constructor({ price }) {
+		this.#price = price;
+	}
+
+	get price() {
+		return this.#price;
+	}
+
+	set price(newPrice) {
+		if (newPrice <= Car.maxPrice) {
+			this.#price = newPrice;
+		}
+	}
+}
+
+const audi = new Car({ price: 35000 });
+console.log(audi.price); // 35000
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
+
+class Car {
+	static #maxPrice = 50000;
+
+	static checkPrice(price) {
+		if (this.#maxPrice < price) {
+			return 'Error! Price exceeds the maximum';
+		}
+
+		return 'Success! Price is within acceptable limits';
+	}
+
+	constructor({ price }) {
+		this.price = price;
+	}
+}
+
+const audi = new Car({ price: 36000 });
+const bmw = new Car({ price: 64000 });
+
+console.log(Car.checkPrice(audi.price)); // "Success! Price is within acceptable limits"
+console.log(Car.checkPrice(bmw.price)); // "Error! Price exceeds the maximum"
+
+class User {
+	constructor(email) {
+		this.email = email;
+	}
+
+	get email() {
+		return this.email;
+	}
+
+	set email(newEmail) {
+		this.email = newEmail;
+	}
+}
+
+class Admin extends User {
+	static role = {
+		BASIC: 'basic',
+		SUPERUSER: 'superuser',
+	};
+}
+
+class User {
+	email;
+
+	constructor(email) {
+		this.email = email;
+	}
+
+	get email() {
+		return this.email;
+	}
+
+	set email(newEmail) {
+		this.email = newEmail;
+	}
+}
+
+class Admin extends User {
+	static role = {
+		BASIC: 'basic',
+		SUPERUSER: 'superuser',
+	};
+	constructor({ email, access }) {
+		super(email);
+		this.access = access;
+	}
+}
+
+console.log(mangos.email); // "mango@mail.com"
+console.log(mangos.access); // "superuser"
+
+class User {
+	email;
+
+	constructor(email) {
+		this.email = email;
+	}
+
+	get email() {
+		return this.email;
+	}
+
+	set email(newEmail) {
+		this.email = newEmail;
+	}
+}
+class Admin extends User {
+	static role = {
+		BASIC: 'basic',
+		SUPERUSER: 'superuser',
+	};
+
+	blacklistedEmails = [];
+
+	constructor({ email, access }) {
+		super(email);
+		this.access = access;
+	}
+
+	blacklist(email) {
+		return this.blacklistedEmails.push(email);
+	}
+
+	isBlacklisted(email) {
+		return this.blacklistedEmails.includes(email);
+	}
+}
+
+const mangos = new Admin({
+	email: 'mango@mail.com',
+	access: Admin.role.SUPERUSER,
+});
+
+console.log(mangos.email); // "mango@mail.com"
+console.log(mangos.access); // "superuser"
+
+mangos.blacklist('poly@mail.com');
+console.log(mangos.blacklistedEmails); // ["poly@mail.com"]
+console.log(mangos.isBlacklisted('mango@mail.com')); // false
+console.log(mangos.isBlacklisted('poly@mail.com')); // true
