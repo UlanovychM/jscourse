@@ -1310,3 +1310,33 @@ mangos.blacklist('poly@mail.com');
 console.log(mangos.blacklistedEmails); // ["poly@mail.com"]
 console.log(mangos.isBlacklisted('mango@mail.com')); // false
 console.log(mangos.isBlacklisted('poly@mail.com')); // true
+
+//dom
+
+const heading = document.createElement('h1');
+headding.classList.add('title');
+heading.textContent = 'This is a heading';
+console.log(heading); // <h1 class="title">This is a heading</h1>
+
+const image = document.createElement('img');
+image.src = '<https://picsum.photos/id/11/320/240>';
+image.alt = 'Nature';
+console.log(image); // <img src="<https://picsum.photos/id/11/320/240>" alt="Nature" />
+
+const button = document.querySelector('.btn');
+
+button.addEventListener('click', handleClick);
+
+const handleClick = event => {
+	console.log('event: ', event);
+	console.log('event type: ', event.type);
+	console.log('currentTarget: ', event.currentTarget);
+};
+
+button.addEventListener('click', handleClick);
+
+document.addEventListener('keydown', event => {
+	if ((event.ctrlKey || event.metaKey) && event.code === 'KeyS') {
+		console.log('«Ctrl + s» or «Command + s» combo');
+	}
+});
