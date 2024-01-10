@@ -1479,3 +1479,75 @@ function printFruits([firstFruit, secondFruit, thirdFruit]) {
 }
 
 printFruits(['apple', 'banana', 'orange']); // "apple banana orange"
+
+const settings = {
+	theme: 'dark',
+	isAuthenticated: true,
+	options: [1, 2, 3],
+};
+localStorage.setItem('settings', JSON.stringify(settings));
+
+const savedSettings = localStorage.getItem('settings');
+console.log(savedSettings); // A string
+
+const parsedSettings = JSON.parse(savedSettings);
+console.log(parsedSettings); // Settings object
+
+sessionStorage.setItem('user-id', '123');
+sessionStorage.setItem(
+	'tickets',
+	JSON.stringify({ from: 'Lviv', to: 'Kyiv', quantity: 2 })
+);
+console.log(sessionStorage);
+// Storage {user-id: '123', tickets: '{"from":"Lviv","to":"Kyiv","quantity":2}', length: 2}
+
+const userId = sessionStorage.getItem('user-id');
+console.log(userId); // "123"
+
+const tickets = JSON.parse(sessionStorage.getItem('tickets'));
+console.log(tickets); // { from: "Lviv", to: "Kyiv", quantity: 2 }
+
+// Listener input
+let formDate = {};
+
+form.addEventListener('input', e => {
+	formDate[e.target.name] = e.target.value.trim();
+}); // e.target.name - додасть нозву ключ  e.target.value = значення
+
+// Date
+
+const date = new Date(2030, 2, 16, 14, 25, 0, 0);
+console.log(date); // "Sat Mar 16 2030 14:25:00 GMT+0200 "
+console.log(date.getTime()); // 1624021654154
+
+const startTime = Date.now();
+
+// Твій код, виконуваний упродовж деякого часу
+for (let i = 0; i <= 100; i += 1) {
+	console.log(i);
+}
+
+const endTime = Date.now();
+const elapsedTime = endTime - startTime;
+
+console.log(`Elapsed time: ${elapsedTime} ms`);
+
+// Promise
+const isSuccess = true;
+
+// Create promise
+const promise = new Promise((resolve, reject) => {
+	setTimeout(() => {
+		if (isSuccess) {
+			resolve('Success! Value passed to resolve function');
+		} else {
+			reject('Error! Error passed to reject function');
+		}
+	}, 2000);
+});
+
+// Registering promise callbacks
+promise
+	.then(value => console.log(value)) // "Success! Value passed to resolve function"
+	.catch(error => console.log(error)) // "Error! Error passed to reject function"
+	.finally(() => console.log('Promise settled')); // "Promise settled"
