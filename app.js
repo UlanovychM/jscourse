@@ -1386,362 +1386,519 @@ console.log(salary * hour);
 // }
 // console.log(_.partition([1, 2, 3, 4], n => n % 2)); // 20
 
-const book = {
-	title: 'The Last Kingdom',
-	pages: 736,
-	downloads: 10283,
-	rating: 8.38,
-	isPublic: true,
-};
-
-// 1 patern
-
-// function doStuffWithBook(book) {
-// 	// Робимо щось з властивостями об'єкта
-// 	console.log(book.title);
-// 	console.log(book.pages);
-// 	console.log(book.downloads);
-// 	console.log(book.rating);
-// 	console.log(book.isPublic);
-// 	// І так далі
-// }
-
-// patern 2 and 3
-
-// function doStuffWithBook(book) {
-// 	const { title, pages, downloads, rating, isPublic } = book;
-// 	console.log(title);
-// 	console.log(pages);
-// 	console.log(downloads);
-// 	console.log(rating);
-// 	console.log(isPublic);
-// }
-
-// function doStuffWithBook({ title, pages, downloads, rating, isPublic }) {
-// 	console.log(title);
-// 	console.log(pages);
-// 	console.log(downloads);
-// 	console.log(rating);
-// 	console.log(isPublic);
-// }
-
-// for destri object in object
-const user = {
-	name: 'Jacques Gluke',
-	tag: 'jgluke',
-	stats: {
-		followers: 5603,
-		views: 4827,
-		likes: 1308,
-	},
-};
-
-// const {
-// 	name,
-// 	tag,
-// 	stats: { followers, views, likes },
-// } = user;
-
-const { name, isOnline, ...otherProps } = user;
-
-console.log(name); // Jacques Gluke
-console.log(tag); // jgluke
-console.log(stats); // { followers: 5603, views: 4827, likes: 1308 }
-console.log(isOnline); // true
-console.log(otherProps); // {age: 32, email: "j.cob@mail.com"}
-
-//
-
-console.log(name); // Jacques Gluke
-console.log(tag); // jgluke
-console.log(followers); // 5603
-console.log(views); // 4827
-console.log(likes); // 1308
-
-const color = [200, 255, 100];
-// const [red, green, blue] = color;
-
-console.log(`rgb(${red}, ${green}, ${blue})`); // “rgb(200, 255, 100)"
-
-const [red, ...otherColors] = color;
-
-console.log(red); // 200
-console.log(otherColors); // [255, 100]
-
-function printFruits(fruits) {
-	console.log(fruits[0], fruits[1], fruits[2]);
-}
-
-printFruits(['apple', 'banana', 'orange']); // "apple banana orange"
-
-function printFruits([firstFruit, secondFruit, thirdFruit]) {
-	console.log(firstFruit, secondFruit, thirdFruit);
-}
-
-printFruits(['apple', 'banana', 'orange']); // "apple banana orange"
-
-const settings = {
-	theme: 'dark',
-	isAuthenticated: true,
-	options: [1, 2, 3],
-};
-localStorage.setItem('settings', JSON.stringify(settings));
-
-const savedSettings = localStorage.getItem('settings');
-console.log(savedSettings); // A string
-
-const parsedSettings = JSON.parse(savedSettings);
-console.log(parsedSettings); // Settings object
-
-sessionStorage.setItem('user-id', '123');
-sessionStorage.setItem(
-	'tickets',
-	JSON.stringify({ from: 'Lviv', to: 'Kyiv', quantity: 2 })
-);
-console.log(sessionStorage);
-// Storage {user-id: '123', tickets: '{"from":"Lviv","to":"Kyiv","quantity":2}', length: 2}
-
-const userId = sessionStorage.getItem('user-id');
-console.log(userId); // "123"
-
-const tickets = JSON.parse(sessionStorage.getItem('tickets'));
-console.log(tickets); // { from: "Lviv", to: "Kyiv", quantity: 2 }
-
-// Listener input
-let formDate = {};
-
-form.addEventListener('input', e => {
-	formDate[e.target.name] = e.target.value.trim();
-}); // e.target.name - додасть нозву ключ  e.target.value = значення
-
-// Date
-
-const date = new Date(2030, 2, 16, 14, 25, 0, 0);
-console.log(date); // "Sat Mar 16 2030 14:25:00 GMT+0200 "
-console.log(date.getTime()); // 1624021654154
-
-const startTime = Date.now();
-
-// Твій код, виконуваний упродовж деякого часу
-for (let i = 0; i <= 100; i += 1) {
-	console.log(i);
-}
-
-const endTime = Date.now();
-const elapsedTime = endTime - startTime;
-
-console.log(`Elapsed time: ${elapsedTime} ms`);
-
-// Promise
-const isSuccess = true;
-
-// Create promise
-const promise = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		if (isSuccess) {
-			resolve('Success! Value passed to resolve function');
-		} else {
-			reject('Error! Error passed to reject function');
-		}
-	}, 2000);
-});
-
-// Registering promise callbacks
-promise
-	.then(value => console.log(value)) // "Success! Value passed to resolve function"
-	.catch(error => console.log(error)) // "Error! Error passed to reject function"
-	.finally(() => console.log('Promise settled')); // "Promise settled"
-
-const promise2 = new Promise((resolve, reject) => {
-	setTimeout(() => {
-		resolve(5);
-	}, 2000);
-});
-
-promise2
-	.then(value => {
-		console.log(value); // 5
-		return value * 2;
-	})
-	.then(value => {
-		console.log(value); // 10
-		return value * 3;
-	})
-	.then(value => {
-		console.log(value); // 30
-	})
-	.catch(error => {
-		console.log(error);
-	})
-	.finally(() => {
-		console.log('finally');
-	});
-
-// const fetchUserFromServer = (username, onSuccess, onError) => {
-// 	console.log(`Fetching data for ${username}`);
-
-// 	setTimeout(() => {
-// 		// Change value of isSuccess variable to simulate request status
-// 		const isSuccess = true;
-
-// 		if (isSuccess) {
-// 			onSuccess('success value');
-// 		} else {
-// 			onError('error');
-// 		}
-// 	}, 2000);
+// const book = {
+// 	title: 'The Last Kingdom',
+// 	pages: 736,
+// 	downloads: 10283,
+// 	rating: 8.38,
+// 	isPublic: true,
 // };
 
-// fetchUserFromServer(
-// 	'Mango',
-// 	user => console.log(user),
-// 	error => console.error(error)
+// // 1 patern
+
+// // function doStuffWithBook(book) {
+// // 	// Робимо щось з властивостями об'єкта
+// // 	console.log(book.title);
+// // 	console.log(book.pages);
+// // 	console.log(book.downloads);
+// // 	console.log(book.rating);
+// // 	console.log(book.isPublic);
+// // 	// І так далі
+// // }
+
+// // patern 2 and 3
+
+// // function doStuffWithBook(book) {
+// // 	const { title, pages, downloads, rating, isPublic } = book;
+// // 	console.log(title);
+// // 	console.log(pages);
+// // 	console.log(downloads);
+// // 	console.log(rating);
+// // 	console.log(isPublic);
+// // }
+
+// // function doStuffWithBook({ title, pages, downloads, rating, isPublic }) {
+// // 	console.log(title);
+// // 	console.log(pages);
+// // 	console.log(downloads);
+// // 	console.log(rating);
+// // 	console.log(isPublic);
+// // }
+
+// // for destri object in object
+// const user = {
+// 	name: 'Jacques Gluke',
+// 	tag: 'jgluke',
+// 	stats: {
+// 		followers: 5603,
+// 		views: 4827,
+// 		likes: 1308,
+// 	},
+// };
+
+// // const {
+// // 	name,
+// // 	tag,
+// // 	stats: { followers, views, likes },
+// // } = user;
+
+// const { name, isOnline, ...otherProps } = user;
+
+// // console.log(name); // Jacques Gluke
+// // // console.log(tag); // jgluke
+// // console.log(stats); // { followers: 5603, views: 4827, likes: 1308 }
+// // console.log(isOnline); // true
+// // console.log(otherProps); // {age: 32, email: "j.cob@mail.com"}
+
+// //
+
+// // console.log(name); // Jacques Gluke
+// // console.log(tag); // jgluke
+// // console.log(followers); // 5603
+// // console.log(views); // 4827
+// // console.log(likes); // 1308
+
+// const color = [200, 255, 100];
+// // const [red, green, blue] = color;
+
+// // console.log(`rgb(${red}, ${green}, ${blue})`); // “rgb(200, 255, 100)"
+
+// // const [red, ...otherColors] = color;
+
+// // // console.log(red); // 200
+// // // console.log(otherColors); // [255, 100]
+
+// // function printFruits(fruits) {
+// // 	console.log(fruits[0], fruits[1], fruits[2]);
+// // }
+
+// printFruits(['apple', 'banana', 'orange']); // "apple banana orange"
+
+// function printFruits([firstFruit, secondFruit, thirdFruit]) {
+// 	console.log(firstFruit, secondFruit, thirdFruit);
+// }
+
+// printFruits(['apple', 'banana', 'orange']); // "apple banana orange"
+
+// const settings = {
+// 	theme: 'dark',
+// 	isAuthenticated: true,
+// 	options: [1, 2, 3],
+// };
+// localStorage.setItem('settings', JSON.stringify(settings));
+
+// const savedSettings = localStorage.getItem('settings');
+// console.log(savedSettings); // A string
+
+// const parsedSettings = JSON.parse(savedSettings);
+// console.log(parsedSettings); // Settings object
+
+// sessionStorage.setItem('user-id', '123');
+// sessionStorage.setItem(
+// 	'tickets',
+// 	JSON.stringify({ from: 'Lviv', to: 'Kyiv', quantity: 2 })
 // );
+// console.log(sessionStorage);
+// // Storage {user-id: '123', tickets: '{"from":"Lviv","to":"Kyiv","quantity":2}', length: 2}
 
-const fetchUserFromServer = username => {
-	return new Promise((resolve, reject) => {
-		console.log(`Fetching data for ${username}`);
+// const userId = sessionStorage.getItem('user-id');
+// console.log(userId); // "123"
 
-		setTimeout(() => {
-			// Change value of isSuccess variable to simulate request status
-			const isSuccess = true;
+// const tickets = JSON.parse(sessionStorage.getItem('tickets'));
+// console.log(tickets); // { from: "Lviv", to: "Kyiv", quantity: 2 }
 
-			if (isSuccess) {
-				resolve('success value'); // значенням параметра resolve буде колбек-функція методу then()
-			} else {
-				reject('error'); // значенням параметра reject буде колбек-функція методу catch()
-			}
-		}, 2000);
-	});
-};
+// // Listener input
+// // let formDate = {};
 
-const userPromise = fetchUserFromServer('Mango'); // результатом виклику fetchUserFromServer("Mango") буде проміс
+// // form.addEventListener('input', e => {
+// // 	formDate[e.target.name] = e.target.value.trim();
+// // }); // e.target.name - додасть нозву ключ  e.target.value = значення
 
-// проміс обробляємо у методах then() i catch()
-userPromise
-	.then(user => console.log(user))
-	.catch(error => console.error(error));
+// // Date
 
-new Promise(resolve => resolve('success value'))
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// const date = new Date(2030, 2, 16, 14, 25, 0, 0);
+// console.log(date); // "Sat Mar 16 2030 14:25:00 GMT+0200 "
+// console.log(date.getTime()); // 1624021654154
 
-// Так створюється успішно виконаний проміс через Promise.resolve():
+// const startTime = Date.now();
 
-Promise.resolve('success value')
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// // Твій код, виконуваний упродовж деякого часу
+// for (let i = 0; i <= 100; i += 1) {
+// 	console.log(i);
+// }
 
-// Так створюється проміс, що виконався з помилкою через new Promise():
+// const endTime = Date.now();
+// const elapsedTime = endTime - startTime;
 
-new Promise((resolve, reject) => reject('error'))
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// console.log(`Elapsed time: ${elapsedTime} ms`);
 
-// Так створюється проміс, що виконався з помилкою через Promise.reject():
+// // Promise
+// const isSuccess = true;
 
-Promise.reject('error')
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// // Create promise
+// const promise = new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		if (isSuccess) {
+// 			resolve('Success! Value passed to resolve function');
+// 		} else {
+// 			reject('Error! Error passed to reject function');
+// 		}
+// 	}, 2000);
+// });
 
-// Промисифікація
+// // Registering promise callbacks
+// promise
+// 	.then(value => console.log(value)) // "Success! Value passed to resolve function"
+// 	.catch(error => console.log(error)) // "Error! Error passed to reject function"
+// 	.finally(() => console.log('Promise settled')); // "Promise settled"
+
+// const promise2 = new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		resolve(5);
+// 	}, 2000);
+// });
+
+// promise2
+// 	.then(value => {
+// 		console.log(value); // 5
+// 		return value * 2;
+// 	})
+// 	.then(value => {
+// 		console.log(value); // 10
+// 		return value * 3;
+// 	})
+// 	.then(value => {
+// 		console.log(value); // 30
+// 	})
+// 	.catch(error => {
+// 		console.log(error);
+// 	})
+// 	.finally(() => {
+// 		console.log('finally');
+// 	});
+
+// // const fetchUserFromServer = (username, onSuccess, onError) => {
+// // 	console.log(`Fetching data for ${username}`);
+
+// // 	setTimeout(() => {
+// // 		// Change value of isSuccess variable to simulate request status
+// // 		const isSuccess = true;
+
+// // 		if (isSuccess) {
+// // 			onSuccess('success value');
+// // 		} else {
+// // 			onError('error');
+// // 		}
+// // 	}, 2000);
+// // };
+
+// // fetchUserFromServer(
+// // 	'Mango',
+// // 	user => console.log(user),
+// // 	error => console.error(error)
+// // );
+
+// const fetchUserFromServer = username => {
+// 	return new Promise((resolve, reject) => {
+// 		console.log(`Fetching data for ${username}`);
+
+// 		setTimeout(() => {
+// 			// Change value of isSuccess variable to simulate request status
+// 			const isSuccess = true;
+
+// 			if (isSuccess) {
+// 				resolve('success value'); // значенням параметра resolve буде колбек-функція методу then()
+// 			} else {
+// 				reject('error'); // значенням параметра reject буде колбек-функція методу catch()
+// 			}
+// 		}, 2000);
+// 	});
+// };
+
+// const userPromise = fetchUserFromServer('Mango'); // результатом виклику fetchUserFromServer("Mango") буде проміс
+
+// // проміс обробляємо у методах then() i catch()
+// userPromise
+// 	.then(user => console.log(user))
+// 	.catch(error => console.error(error));
+
+// new Promise(resolve => resolve('success value'))
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
+
+// // Так створюється успішно виконаний проміс через Promise.resolve():
+
+// Promise.resolve('success value')
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
+
+// // Так створюється проміс, що виконався з помилкою через new Promise():
+
+// new Promise((resolve, reject) => reject('error'))
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
+
+// // Так створюється проміс, що виконався з помилкою через Promise.reject():
+
+// Promise.reject('error')
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
+
+// // Промисифікація
+
+// // const makeGreeting = guestName => {
+// // 	return new Promise((resolve, reject) => {
+// // 		if (!guestName) {
+// // 			reject('Guest name must not be empty');
+// // 		} else {
+// // 			resolve(`Welcome ${guestName}`);
+// // 		}
+// // 	});
+// // };
+
+// // makeGreeting('Mango')
+// // 	.then(greeting => console.log(greeting))
+// // 	.catch(error => console.error(error));
+
+// // Metodth .resolve() .reject()
 
 // const makeGreeting = guestName => {
-// 	return new Promise((resolve, reject) => {
-// 		if (!guestName) {
-// 			reject('Guest name must not be empty');
-// 		} else {
-// 			resolve(`Welcome ${guestName}`);
-// 		}
-// 	});
+// 	if (!guestName) {
+// 		return Promise.reject('Guest name must not be empty');
+// 	} else {
+// 		return Promise.resolve(`Welcome ${guestName}`);
+// 	}
 // };
 
 // makeGreeting('Mango')
 // 	.then(greeting => console.log(greeting))
 // 	.catch(error => console.error(error));
 
+// new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		resolve('Fulfilled A');
+// 	}, 1000);
+// })
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
 
-// Metodth .resolve() .reject()
+// new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		resolve('Fulfilled B');
+// 	}, 3000);
+// })
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error));
 
-const makeGreeting = guestName => {
-	if (!guestName) {
-		return Promise.reject('Guest name must not be empty');
-	} else {
-		return Promise.resolve(`Welcome ${guestName}`);
-	}
-};
+// new Promise((resolve, reject) => {
+// 	setTimeout(() => {
+// 		reject('Rejected C');
+// 	}, 2000);
+// })
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error)); // "Rejected C"
 
-makeGreeting('Mango')
-	.then(greeting => console.log(greeting))
-	.catch(error => console.error(error));
+// const makePromise = ({ value, delay, shouldResolve = true }) => {
+// 	return new Promise((resolve, reject) => {
+// 		setTimeout(() => {
+// 			if (shouldResolve) {
+// 				resolve(value);
+// 			} else {
+// 				reject(value);
+// 			}
+// 		}, delay);
+// 	});
+// };
 
-new Promise((resolve, reject) => {
-	setTimeout(() => {
-		resolve('Fulfilled A');
-	}, 1000);
-})
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// makePromise({ value: 'A', delay: 1000 })
+// 	.then(value => console.log(value)) // "A"
+// 	.catch(error => console.log(error));
 
-new Promise((resolve, reject) => {
-	setTimeout(() => {
-		resolve('Fulfilled B');
-	}, 3000);
-})
-	.then(value => console.log(value))
-	.catch(error => console.log(error));
+// makePromise({ value: 'B', delay: 3000 })
+// 	.then(value => console.log(value)) // "B"
+// 	.catch(error => console.log(error));
 
-new Promise((resolve, reject) => {
-	setTimeout(() => {
-		reject('Rejected C');
-	}, 2000);
-})
-	.then(value => console.log(value))
-	.catch(error => console.log(error)); // "Rejected C"
-
-const makePromise = ({ value, delay, shouldResolve = true }) => {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			if (shouldResolve) {
-				resolve(value);
-			} else {
-				reject(value);
-			}
-		}, delay);
-	});
-};
-
-makePromise({ value: 'A', delay: 1000 })
-	.then(value => console.log(value)) // "A"
-	.catch(error => console.log(error));
-
-makePromise({ value: 'B', delay: 3000 })
-	.then(value => console.log(value)) // "B"
-	.catch(error => console.log(error));
-
-makePromise({ value: 'C', delay: 2000, shouldResolve: false })
-	.then(value => console.log(value))
-	.catch(error => console.log(error)); // "C"
-
-const p1 = Promise.resolve(1);
-const p2 = Promise.resolve(2);
-const p3 = Promise.resolve(3);
-
-// .all()
-
-Promise.all([p1, p2, p3])
-	.then(values => console.log(values)) // [1, 2, 3]
-	.catch(error => console.log(error));
+// makePromise({ value: 'C', delay: 2000, shouldResolve: false })
+// 	.then(value => console.log(value))
+// 	.catch(error => console.log(error)); // "C"
 
 // const p1 = Promise.resolve(1);
-// const p2 = Promise.reject('Rejected promise 2');
+// const p2 = Promise.resolve(2);
 // const p3 = Promise.resolve(3);
- 
-// .allSettled()
 
-Promise.allSettled([p1, p2, p3]).then(values => console.log(values));
-// [
-//   { status: "fulfilled", value: 1},
-//   { status: "rejected", value: "Rejected promise 2"},
-//   { status: "fulfilled", value: 3}
-// ]
+// // .all()
+
+// Promise.all([p1, p2, p3])
+// 	.then(values => console.log(values)) // [1, 2, 3]
+// 	.catch(error => console.log(error));
+
+// // const p1 = Promise.resolve(1);
+// // const p2 = Promise.reject('Rejected promise 2');
+// // const p3 = Promise.resolve(3);
+
+// // .allSettled()
+
+// Promise.allSettled([p1, p2, p3]).then(values => console.log(values));
+// // [
+// //   { status: "fulfilled", value: 1},
+// //   { status: "rejected", value: "Rejected promise 2"},
+// //   { status: "fulfilled", value: 3}
+// // ]
+
+// Read
+const options = {
+	method: 'GET',
+};
+
+fetch('https://jsonplaceholder.typicode.com/users', options)
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	})
+	.then(data => {
+		// Data handling
+		console.log(data);
+	})
+	.catch(error => {
+		// Error handling
+		console.log(error);
+	});
+
+// LIteral
+fetch('some-url', {
+	headers: {
+		'Content-Type': 'application/json',
+		'X-Custom-Header': 'custom value',
+	},
+});
+
+fetch('https://jsonplaceholder.typicode.com/users', {
+	headers: {
+		Accept: 'application/json',
+	},
+}).then(response => {
+	// ...
+});
+
+// User-Agent: Ідентифікує клієнтське програмне забезпечення, яке виконує запит
+// Accept: Вказує, які типи медіа клієнт може обробляти
+// Content-Type: Вказує тип контенту в тілі запиту або відповіді
+// Authorization: Використовується для передачі облікових даних для аутентифікації
+// Cache-Control: Директиви для керування кешуванням
+// Host: Доменне ім'я ресурсу, до якого виконується запит
+
+const fetchUsersBtn = document.querySelector('.btn');
+const userList = document.querySelector('.user-list');
+
+fetchUsersBtn.addEventListener('click', () => {
+	fetch('https://jsonplaceholder.typicode.com/users')
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(response.status);
+			}
+			return response.json();
+		})
+		.then(users => {
+			const markup = users
+				.map(user => {
+					return `<li>
+	          <p><b>Name</b>: ${user.name}</p>
+	          <p><b>Email</b>: ${user.email}</p>
+	          <p><b>Company</b>: ${user.company.name}</p>
+	        </li>`;
+				})
+				.join('');
+
+			userList.insertAdjacentHTML('beforeend', markup);
+		})
+		.catch(error => console.log(error));
+});
+
+const searchParams = new URLSearchParams({
+	_limit: 5,
+	_sort: 'name',
+});
+
+console.log(searchParams.toString()); // "_limit=5&_sort=name"
+const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
+console.log(url); // "<https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name>"
+
+const postId = 1;
+
+fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	})
+	.then(posts => console.log(posts))
+	.catch(error => console.log(error));
+
+// Create
+
+const postToAdd = {
+	title: 'CRUD',
+	body: 'CRUD is awesome!',
+};
+
+const options2 = {
+	method: 'POST',
+	body: JSON.stringify(postToAdd),
+	headers: {
+		'Content-Type': 'application/json; charset=UTF-8',
+	},
+};
+
+fetch('https://jsonplaceholder.typicode.com/posts', options2)
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	})
+	.then(post => console.log(post))
+	.catch(error => console.log(error));
+
+// Update
+
+const postToUpdate = {
+	id: 1,
+	body: 'CRUD is really awesome!',
+};
+
+const options3 = {
+	method: 'PATCH',
+	body: JSON.stringify(postToUpdate),
+	headers: {
+		'Content-Type': 'application/json; charset=UTF-8',
+	},
+};
+
+fetch(`https://jsonplaceholder.typicode.com/posts/${postToUpdate.id}`, options3)
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	})
+	.then(post => console.log(post))
+	.catch(error => console.log('ERROR:', error));
+
+//Delete
+
+const postIdToDelete = 1;
+
+fetch(`https://jsonplaceholder.typicode.com/posts/${postIdToDelete}`, {
+	method: 'DELETE',
+})
+	.then(response => {
+		if (!response.ok) {
+			throw new Error(response.status);
+		}
+		return response.json();
+	})
+	.then(deletedPost => console.log(deletedPost))
+	.catch(error => console.log('Error:', error));
