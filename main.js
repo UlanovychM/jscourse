@@ -1,5 +1,7 @@
 'use strict';
 
+//
+
 // const w = 10;
 
 // const h = 5;
@@ -1902,3 +1904,14 @@ fetch(`https://jsonplaceholder.typicode.com/posts/${postIdToDelete}`, {
 	})
 	.then(deletedPost => console.log(deletedPost))
 	.catch(error => console.log('Error:', error));
+
+// Axios
+
+import axios from 'axios';
+
+axios({
+	method: 'get',
+	url: '<https://jsonplaceholder.typicode.com/users>',
+})
+	.then(response => console.log(response))
+	.catch(error => console.log(error));
