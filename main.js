@@ -1748,170 +1748,293 @@ console.log(salary * hour);
 // // ]
 
 // Read
-const options = {
-	method: 'GET',
-};
+// const options = {
+// 	method: 'GET',
+// };
 
-fetch('https://jsonplaceholder.typicode.com/users', options)
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-		return response.json();
-	})
-	.then(data => {
-		// Data handling
-		console.log(data);
-	})
-	.catch(error => {
-		// Error handling
-		console.log(error);
-	});
+// fetch('https://jsonplaceholder.typicode.com/users', options)
+// 	.then(response => {
+// 		if (!response.ok) {
+// 			throw new Error(response.status);
+// 		}
+// 		return response.json();
+// 	})
+// 	.then(data => {
+// 		// Data handling
+// 		console.log(data);
+// 	})
+// 	.catch(error => {
+// 		// Error handling
+// 		console.log(error);
+// 	});
 
-// LIteral
-fetch('some-url', {
-	headers: {
-		'Content-Type': 'application/json',
-		'X-Custom-Header': 'custom value',
-	},
-});
+// // LIteral
+// fetch('some-url', {
+// 	headers: {
+// 		'Content-Type': 'application/json',
+// 		'X-Custom-Header': 'custom value',
+// 	},
+// });
 
-fetch('https://jsonplaceholder.typicode.com/users', {
-	headers: {
-		Accept: 'application/json',
-	},
-}).then(response => {
-	// ...
-});
+// fetch('https://jsonplaceholder.typicode.com/users', {
+// 	headers: {
+// 		Accept: 'application/json',
+// 	},
+// }).then(response => {
+// 	// ...
+// });
 
-// User-Agent: Ідентифікує клієнтське програмне забезпечення, яке виконує запит
-// Accept: Вказує, які типи медіа клієнт може обробляти
-// Content-Type: Вказує тип контенту в тілі запиту або відповіді
-// Authorization: Використовується для передачі облікових даних для аутентифікації
-// Cache-Control: Директиви для керування кешуванням
-// Host: Доменне ім'я ресурсу, до якого виконується запит
+// // User-Agent: Ідентифікує клієнтське програмне забезпечення, яке виконує запит
+// // Accept: Вказує, які типи медіа клієнт може обробляти
+// // Content-Type: Вказує тип контенту в тілі запиту або відповіді
+// // Authorization: Використовується для передачі облікових даних для аутентифікації
+// // Cache-Control: Директиви для керування кешуванням
+// // Host: Доменне ім'я ресурсу, до якого виконується запит
 
-const fetchUsersBtn = document.querySelector('.btn');
-const userList = document.querySelector('.user-list');
+// const fetchUsersBtn = document.querySelector('.btn');
+// const userList = document.querySelector('.user-list');
 
-fetchUsersBtn.addEventListener('click', () => {
-	fetch('https://jsonplaceholder.typicode.com/users')
-		.then(response => {
-			if (!response.ok) {
-				throw new Error(response.status);
-			}
-			return response.json();
-		})
-		.then(users => {
-			const markup = users
-				.map(user => {
-					return `<li>
-	          <p><b>Name</b>: ${user.name}</p>
-	          <p><b>Email</b>: ${user.email}</p>
-	          <p><b>Company</b>: ${user.company.name}</p>
-	        </li>`;
-				})
-				.join('');
+// fetchUsersBtn.addEventListener('click', () => {
+// 	fetch('https://jsonplaceholder.typicode.com/users')
+// 		.then(response => {
+// 			if (!response.ok) {
+// 				throw new Error(response.status);
+// 			}
+// 			return response.json();
+// 		})
+// 		.then(users => {
+// 			const markup = users
+// 				.map(user => {
+// 					return `<li>
+// 	          <p><b>Name</b>: ${user.name}</p>
+// 	          <p><b>Email</b>: ${user.email}</p>
+// 	          <p><b>Company</b>: ${user.company.name}</p>
+// 	        </li>`;
+// 				})
+// 				.join('');
 
-			userList.insertAdjacentHTML('beforeend', markup);
-		})
-		.catch(error => console.log(error));
-});
+// 			userList.insertAdjacentHTML('beforeend', markup);
+// 		})
+// 		.catch(error => console.log(error));
+// });
 
-const searchParams = new URLSearchParams({
-	_limit: 5,
-	_sort: 'name',
-});
+// const searchParams = new URLSearchParams({
+// 	_limit: 5,
+// 	_sort: 'name',
+// });
 
-console.log(searchParams.toString()); // "_limit=5&_sort=name"
-const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
-console.log(url); // "<https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name>"
+// console.log(searchParams.toString()); // "_limit=5&_sort=name"
+// const url = `https://jsonplaceholder.typicode.com/users?${searchParams}`;
+// console.log(url); // "<https://jsonplaceholder.typicode.com/users?_limit=5&_sort=name>"
 
-const postId = 1;
+// const postId = 1;
 
-fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-		return response.json();
-	})
-	.then(posts => console.log(posts))
-	.catch(error => console.log(error));
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
+// 	.then(response => {
+// 		if (!response.ok) {
+// 			throw new Error(response.status);
+// 		}
+// 		return response.json();
+// 	})
+// 	.then(posts => console.log(posts))
+// 	.catch(error => console.log(error));
 
-// Create
+// // Create
 
-const postToAdd = {
-	title: 'CRUD',
-	body: 'CRUD is awesome!',
-};
+// const postToAdd = {
+// 	title: 'CRUD',
+// 	body: 'CRUD is awesome!',
+// };
 
-const options2 = {
-	method: 'POST',
-	body: JSON.stringify(postToAdd),
-	headers: {
-		'Content-Type': 'application/json; charset=UTF-8',
-	},
-};
+// const options2 = {
+// 	method: 'POST',
+// 	body: JSON.stringify(postToAdd),
+// 	headers: {
+// 		'Content-Type': 'application/json; charset=UTF-8',
+// 	},
+// };
 
-fetch('https://jsonplaceholder.typicode.com/posts', options2)
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-		return response.json();
-	})
-	.then(post => console.log(post))
-	.catch(error => console.log(error));
+// fetch('https://jsonplaceholder.typicode.com/posts', options2)
+// 	.then(response => {
+// 		if (!response.ok) {
+// 			throw new Error(response.status);
+// 		}
+// 		return response.json();
+// 	})
+// 	.then(post => console.log(post))
+// 	.catch(error => console.log(error));
 
-// Update
+// // Update
 
-const postToUpdate = {
-	id: 1,
-	body: 'CRUD is really awesome!',
-};
+// const postToUpdate = {
+// 	id: 1,
+// 	body: 'CRUD is really awesome!',
+// };
 
-const options3 = {
-	method: 'PATCH',
-	body: JSON.stringify(postToUpdate),
-	headers: {
-		'Content-Type': 'application/json; charset=UTF-8',
-	},
-};
+// const options3 = {
+// 	method: 'PATCH',
+// 	body: JSON.stringify(postToUpdate),
+// 	headers: {
+// 		'Content-Type': 'application/json; charset=UTF-8',
+// 	},
+// };
 
-fetch(`https://jsonplaceholder.typicode.com/posts/${postToUpdate.id}`, options3)
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-		return response.json();
-	})
-	.then(post => console.log(post))
-	.catch(error => console.log('ERROR:', error));
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postToUpdate.id}`, options3)
+// 	.then(response => {
+// 		if (!response.ok) {
+// 			throw new Error(response.status);
+// 		}
+// 		return response.json();
+// 	})
+// 	.then(post => console.log(post))
+// 	.catch(error => console.log('ERROR:', error));
 
-//Delete
+// //Delete
 
-const postIdToDelete = 1;
+// const postIdToDelete = 1;
 
-fetch(`https://jsonplaceholder.typicode.com/posts/${postIdToDelete}`, {
-	method: 'DELETE',
-})
-	.then(response => {
-		if (!response.ok) {
-			throw new Error(response.status);
-		}
-		return response.json();
-	})
-	.then(deletedPost => console.log(deletedPost))
-	.catch(error => console.log('Error:', error));
+// fetch(`https://jsonplaceholder.typicode.com/posts/${postIdToDelete}`, {
+// 	method: 'DELETE',
+// })
+// 	.then(response => {
+// 		if (!response.ok) {
+// 			throw new Error(response.status);
+// 		}
+// 		return response.json();
+// 	})
+// 	.then(deletedPost => console.log(deletedPost))
+// 	.catch(error => console.log('Error:', error));
 
-// Axios
+// // Axios
 
 import axios from 'axios';
 
-axios({
-	method: 'get',
-	url: '<https://jsonplaceholder.typicode.com/users>',
-})
-	.then(response => console.log(response))
-	.catch(error => console.log(error));
+// axios.defaults.baseURL = '<https://jsonplaceholder.typicode.com>';
+
+// const myApiKey = 'secret-api-key-for-every-request';
+// axios.defaults.headers.common['api'] = myApiKey;
+
+// axios.get('/users').then().catch();
+
+// axios.get('/posts').then().catch();
+
+// axios.get('/images').then().catch();
+
+// axios
+// 	.get('<https://jsonplaceholder.typicode.com/users>', {
+// 		params: {
+// 			_limit: 7,
+// 			_sort: 'name',
+// 		},
+// 	})
+// 	.then(response => {
+// 		console.log(response.data);
+// 		console.log(response.status);
+// 		console.log(response.statusText);
+// 		console.log(response.headers);
+// 		console.log(response.config);
+// 	})
+// 	.catch(error => {
+// 		console.log(error);
+// 	});
+
+// const foo = async () => {
+// 	console.log('Before await');
+
+// 	const promiseValue = await new Promise(resolve => {
+// 		setTimeout(() => resolve(5), 2000);
+// 	});
+
+// 	console.log('After await', promiseValue);
+// };
+
+// foo();
+
+// const fetchUsers = async () => {
+// 	const response = await axios.get(
+// 		'<https://jsonplaceholder.typicode.com/users>'
+// 	);
+// 	return response.data;
+// };
+
+// const doStuff = async () => {
+// 	try {
+// 		const users = await fetchUsers();
+// 		console.log(users);
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// };
+
+// doStuff();
+
+// // fetchUsers().then(users => console.log(users));
+
+// const fetchPosts = async () => {
+// 	const response = await axios.get(
+// 		'<https://jsonplaceholder.typicode.com/posts>'
+// 	);
+// 	console.log('Posts: ', response.data);
+// };
+
+const fetchPostsBtn = document.querySelector('.btn');
+const postList = document.querySelector('.posts');
+
+// Controls the group number
+let page = 1;
+// Controls the number of items in the group
+let perPage = 10;
+
+fetchPostsBtn.addEventListener('click', async () => {
+	try {
+		const posts = await fetchPosts();
+		renderPosts(posts);
+		// Increase the group number
+		page += 1;
+
+		// Replace button text after first request
+		if (page > 1) {
+			fetchPostsBtn.textContent = 'Fetch more posts';
+		}
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+async function fetchPosts() {
+	const params = new URLSearchParams({
+		_limit: perPage,
+		_page: page,
+	});
+
+	const response = await axios.get(
+		`https://jsonplaceholder.typicode.com/posts?${params}`
+	);
+	return response.data;
+}
+
+function renderPosts(posts) {
+	const markup = posts
+		.map(({ id, title, body, userId }) => {
+			return `<li>
+          <h2 class="post-title">${title.slice(0, 30)}</h2>
+          <p><b>Post id</b>: ${id}</p>
+          <p><b>Author id</b>: ${userId}</p>
+          <p class="post-body">${body}</p>
+        </li>`;
+		})
+		.join('');
+	postList.insertAdjacentHTML('beforeend', markup);
+}
+
+// Контролює кількість елементів в групі
+let limit = 30;
+// Кількість груп в колекції
+const totalPages = Math.ceil(100 / limit);
+
+if (page > totalPages) {
+	return iziToast.error({
+		position: 'topRight',
+		message: "We're sorry, there are no more posts to load",
+	});
+}
