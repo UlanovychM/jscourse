@@ -2070,22 +2070,20 @@ const q1 = getAverage(35467, 29842, 38501);
 const q2 = getAverage(70533, 50121, 33899);
 
 const printBonus = (dept1AverSales, dept2AverSales) => {
-	if (dept1AverSales > dept2AverSales) {
+	if (
+		dept1AverSales > dept2AverSales &&
+		dept1AverSales >= 1.3 * dept2AverSales
+	) {
 		let bonusChek = dept1AverSales - dept2AverSales;
 		let procentChek = (bonusChek / dept2AverSales) * 100;
-		if (procentChek >= 30) {
-			console.log(`Dept 1 will get a bonus of ${procentChek}%`);
-		} else {
-			console.log(`No bonus`);
-		}
+
+		console.log(`Dept 1 will get a bonus of ${procentChek}%`);
 	} else if (dept2AverSales > dept1AverSales) {
 		let bonusChek = dept2AverSales - dept1AverSales;
 		let procentChek = (bonusChek / dept1AverSales) * 100;
-		if (procentChek >= 30) {
-			console.log(`Dept 2 will get a bonus of ${procentChek}%`);
-		} else {
-			console.log(`No bonus`);
-		}
+		console.log(`Dept 2 will get a bonus of ${procentChek}%`);
+	} else {
+		console.log(`No bonus`);
 	}
 };
 
