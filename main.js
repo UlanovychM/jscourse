@@ -2078,7 +2078,10 @@ const printBonus = (dept1AverSales, dept2AverSales) => {
 		let procentChek = (bonusChek / dept2AverSales) * 100;
 
 		console.log(`Dept 1 will get a bonus of ${procentChek}%`);
-	} else if (dept2AverSales > dept1AverSales) {
+	} else if (
+		dept2AverSales > dept1AverSales &&
+		dept2AverSales >= 1.3 * dept1AverSales
+	) {
 		let bonusChek = dept2AverSales - dept1AverSales;
 		let procentChek = (bonusChek / dept1AverSales) * 100;
 		console.log(`Dept 2 will get a bonus of ${procentChek}%`);
