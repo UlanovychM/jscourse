@@ -2047,12 +2047,26 @@ console.log(salary * hour);
 
 // console.log('aaaa' + start + b + c);
 
-const kg = +prompt('Enter kg');
-const height = +prompt('Enter height');
+// const kg = +prompt('Enter kg');
+// const height = +prompt('Enter height');
 
-let bmi = kg / Math.pow(height, 2);
+// let bmi = kg / Math.pow(height, 2);
 
-if (bmi >= 25) {
-	alert(` u overweight not normal ${bmi - 25}`);
-}
-alert(`u overweight normal`);
+// if (bmi >= 25) {
+// 	alert(` u overweight not normal ${bmi - 25}`);
+// }
+// alert(`u overweight normal`);
+
+const age = +prompt('Enter your age');
+
+const message = age >= 18 ? 'u can buy alcohol' : 'u cant buy the alcohol';
+// age >= 18 ? alert('u can buy alcohol') : alert('u cant buy the alcohol');
+
+alert(message);
+
+const getAverage = (data1, data2, data3) => (data1 + data2 + data3) / 3;
+
+// const printBonus = (dept1AverSales, dept2AverSales) => {
+// 	dept1AverSales = getAverage(35467, 29842, 38501);
+// 	dept2AverSales = getAverage(70533, 50121, 33899);
+// };
