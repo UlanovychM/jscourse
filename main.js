@@ -2057,16 +2057,36 @@ console.log(salary * hour);
 // }
 // alert(`u overweight normal`);
 
-const age = +prompt('Enter your age');
+// const age = +prompt('Enter your age');
 
-const message = age >= 18 ? 'u can buy alcohol' : 'u cant buy the alcohol';
-// age >= 18 ? alert('u can buy alcohol') : alert('u cant buy the alcohol');
+// const message = age >= 18 ? 'u can buy alcohol' : 'u cant buy the alcohol';
+// // age >= 18 ? alert('u can buy alcohol') : alert('u cant buy the alcohol');
 
-alert(message);
+// alert(message);
 
 const getAverage = (data1, data2, data3) => (data1 + data2 + data3) / 3;
 
-// const printBonus = (dept1AverSales, dept2AverSales) => {
-// 	dept1AverSales = getAverage(35467, 29842, 38501);
-// 	dept2AverSales = getAverage(70533, 50121, 33899);
-// };
+const q1 = getAverage(35467, 29842, 38501);
+const q2 = getAverage(70533, 50121, 33899);
+
+const printBonus = (dept1AverSales, dept2AverSales) => {
+	if (dept1AverSales > dept2AverSales) {
+		let bonusChek = dept1AverSales - dept2AverSales;
+		let procentChek = (bonusChek / dept2AverSales) * 100;
+		if (procentChek >= 30) {
+			console.log(`Dept 1 will get a bonus of ${procentChek}%`);
+		} else {
+			console.log(`No bonus`);
+		}
+	} else if (dept2AverSales > dept1AverSales) {
+		let bonusChek = dept2AverSales - dept1AverSales;
+		let procentChek = (bonusChek / dept1AverSales) * 100;
+		if (procentChek >= 30) {
+			console.log(`Dept 2 will get a bonus of ${procentChek}%`);
+		} else {
+			console.log(`No bonus`);
+		}
+	}
+};
+
+printBonus(q1, q2);
