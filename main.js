@@ -2091,3 +2091,19 @@ const printBonus = (dept1AverSales, dept2AverSales) => {
 };
 
 printBonus(q1, q2);
+
+const bills = [11, 20, 44];
+const arr = [];
+
+bills.forEach(item => {
+	let sum = 0;
+	if (item <= 20) {
+		sum = item * 0.15;
+	}
+
+	sum = item * 0.2;
+
+	arr.push(sum);
+});
+
+console.log(arr);
