@@ -2107,3 +2107,41 @@ bills.forEach(item => {
 });
 
 console.log(arr);
+
+const jack = {
+	name: 'Jack',
+	lastname: 'White',
+	weight: 79,
+	height: 1.7,
+	calculater() {
+		this.bmi = Math.floor(this.weight / this.height ** 2);
+
+		return this.bmi;
+	},
+};
+
+const mike = {
+	name: 'Mike',
+	lastname: 'Black',
+	weight: 91,
+	height: 1.93,
+	calculater() {
+		this.bmi = Math.floor(this.weight / this.height ** 2);
+
+		return this.bmi;
+	},
+};
+
+mike.calculater();
+mike.bmi;
+
+jack.calculater();
+jack.bmi;
+
+if (jack.bmi > mike.bmi) {
+	console.log(
+		`${jack.name} ${jack.lastname} BMI ${jack.bmi} is higher than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`
+	);
+} else {
+	`${jack.name} ${jack.lastname} BMI ${jack.bmi} is lower than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`;
+}
