@@ -2092,11 +2092,13 @@ const printBonus = (dept1AverSales, dept2AverSales) => {
 
 printBonus(q1, q2);
 
-const bills = [11, 20, 44];
-const arr = [];
+const bills = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
+const tips = [];
+const total = [];
 
 bills.forEach(item => {
 	let sum = 0;
+
 	if (item <= 20) {
 		sum = item * 0.15;
 	}
@@ -2145,3 +2147,30 @@ if (jack.bmi > mike.bmi) {
 } else {
 	`${jack.name} ${jack.lastname} BMI ${jack.bmi} is lower than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`;
 }
+
+const books = ['1974', '2000', '2005', '1994'];
+const arr2 = [];
+
+for (let i = 0; i < books.length; i++) {
+	arr2.push(2023 - books[i]);
+}
+
+console.log(arr2);
+
+const calculaterBils = bill => (bill < 20 ? bill * 0.2 : bill * 0.15);
+
+const bills2 = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
+
+for (let i = 0; i < bills2.length; i++) {
+	const tip = calculaterBils(bills2[i]);
+	tips.push(tip);
+	total.push(bills[i] + tip);
+}
+
+const calculaterAvanger = arr => {
+	let sum = 0;
+	for (let i = 0; i < arr.length; i++) {
+		sum += arr[i];
+	}
+	return sum / arr.length;
+};
