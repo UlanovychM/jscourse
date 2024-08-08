@@ -2183,6 +2183,7 @@ const weatherChecker = arr => {
 	for (let i = 0; i < arr.length; i++) {
 		str = `${arr[i]}% handley in ${i + 1} days`;
 	}
+	console.log(str);
 };
 
 weatherChecker(data1);
