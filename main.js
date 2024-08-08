@@ -2105,10 +2105,10 @@ bills.forEach(item => {
 
 	sum = item * 0.2;
 
-	arr.push(sum);
+	bills.push(sum);
 });
 
-console.log(arr);
+console.log(bills);
 
 const jack = {
 	name: 'Jack',
@@ -2174,3 +2174,14 @@ const calculaterAvanger = arr => {
 	}
 	return sum / arr.length;
 };
+
+const data1 = [49, 50, 30];
+const data2 = [3, 53, 45, 57, 45, 31];
+
+const weatherChecker = arr => {
+	for (let i = 0; i < arr.length; i++) {
+		alert(`${arr[i]}% handley in ${i + 1} days`);
+	}
+};
+
+weatherChecker(data1);
