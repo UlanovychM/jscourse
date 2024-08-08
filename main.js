@@ -2179,8 +2179,9 @@ const data1 = [49, 50, 30];
 const data2 = [3, 53, 45, 57, 45, 31];
 
 const weatherChecker = arr => {
+	let str = '';
 	for (let i = 0; i < arr.length; i++) {
-		alert(`${arr[i]}% handley in ${i + 1} days`);
+		str = `${arr[i]}% handley in ${i + 1} days`;
 	}
 };
 
