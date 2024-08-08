@@ -2181,9 +2181,9 @@ const data2 = [3, 53, 45, 57, 45, 31];
 const weatherChecker = arr => {
 	let str = '';
 	for (let i = 0; i < arr.length; i++) {
-		str = `${arr[i]}% handley in ${i + 1} days`;
+		str = str + `${arr[i]}% handley in ${i + 1} days ...`;
 	}
-	console.log(str);
+	console.log('... ' + str);
 };
 
 weatherChecker(data1);
