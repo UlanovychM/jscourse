@@ -2064,126 +2064,197 @@ console.log(salary * hour);
 
 // alert(message);
 
-const getAverage = (data1, data2, data3) => (data1 + data2 + data3) / 3;
+// const getAverage = (data1, data2, data3) => (data1 + data2 + data3) / 3;
 
-const q1 = getAverage(35467, 29842, 38501);
-const q2 = getAverage(70533, 50121, 33899);
+// const q1 = getAverage(35467, 29842, 38501);
+// const q2 = getAverage(70533, 50121, 33899);
 
-const printBonus = (dept1AverSales, dept2AverSales) => {
-	if (
-		dept1AverSales > dept2AverSales &&
-		dept1AverSales >= 1.3 * dept2AverSales
-	) {
-		let bonusChek = dept1AverSales - dept2AverSales;
-		let procentChek = (bonusChek / dept2AverSales) * 100;
+// const printBonus = (dept1AverSales, dept2AverSales) => {
+// 	if (
+// 		dept1AverSales > dept2AverSales &&
+// 		dept1AverSales >= 1.3 * dept2AverSales
+// 	) {
+// 		let bonusChek = dept1AverSales - dept2AverSales;
+// 		let procentChek = (bonusChek / dept2AverSales) * 100;
 
-		console.log(`Dept 1 will get a bonus of ${procentChek}%`);
-	} else if (
-		dept2AverSales > dept1AverSales &&
-		dept2AverSales >= 1.3 * dept1AverSales
-	) {
-		let bonusChek = dept2AverSales - dept1AverSales;
-		let procentChek = (bonusChek / dept1AverSales) * 100;
-		console.log(`Dept 2 will get a bonus of ${procentChek}%`);
-	} else {
-		console.log(`No bonus`);
-	}
-};
+// 		console.log(`Dept 1 will get a bonus of ${procentChek}%`);
+// 	} else if (
+// 		dept2AverSales > dept1AverSales &&
+// 		dept2AverSales >= 1.3 * dept1AverSales
+// 	) {
+// 		let bonusChek = dept2AverSales - dept1AverSales;
+// 		let procentChek = (bonusChek / dept1AverSales) * 100;
+// 		console.log(`Dept 2 will get a bonus of ${procentChek}%`);
+// 	} else {
+// 		console.log(`No bonus`);
+// 	}
+// };
 
-printBonus(q1, q2);
+// printBonus(q1, q2);
 
-const bills = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
-const tips = [];
-const total = [];
+// const bills = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
+// const tips = [];
+// const total = [];
 
-bills.forEach(item => {
-	let sum = 0;
+// bills.forEach(item => {
+// 	let sum = 0;
 
-	if (item <= 20) {
-		sum = item * 0.15;
-	}
+// 	if (item <= 20) {
+// 		sum = item * 0.15;
+// 	}
 
-	sum = item * 0.2;
+// 	sum = item * 0.2;
 
-	bills.push(sum);
-});
+// 	bills.push(sum);
+// });
 
-console.log(bills);
+// console.log(bills);
 
-const jack = {
-	name: 'Jack',
-	lastname: 'White',
-	weight: 79,
-	height: 1.7,
-	calculater() {
-		this.bmi = Math.floor(this.weight / this.height ** 2);
+// const jack = {
+// 	name: 'Jack',
+// 	lastname: 'White',
+// 	weight: 79,
+// 	height: 1.7,
+// 	calculater() {
+// 		this.bmi = Math.floor(this.weight / this.height ** 2);
 
-		return this.bmi;
+// 		return this.bmi;
+// 	},
+// };
+
+// const mike = {
+// 	name: 'Mike',
+// 	lastname: 'Black',
+// 	weight: 91,
+// 	height: 1.93,
+// 	calculater() {
+// 		this.bmi = Math.floor(this.weight / this.height ** 2);
+
+// 		return this.bmi;
+// 	},
+// };
+
+// mike.calculater();
+// mike.bmi;
+
+// jack.calculater();
+// jack.bmi;
+
+// if (jack.bmi > mike.bmi) {
+// 	console.log(
+// 		`${jack.name} ${jack.lastname} BMI ${jack.bmi} is higher than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`
+// 	);
+// } else {
+// 	`${jack.name} ${jack.lastname} BMI ${jack.bmi} is lower than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`;
+// }
+
+// const books = ['1974', '2000', '2005', '1994'];
+// const arr2 = [];
+
+// for (let i = 0; i < books.length; i++) {
+// 	arr2.push(2023 - books[i]);
+// }
+
+// console.log(arr2);
+
+// const calculaterBils = bill => (bill < 20 ? bill * 0.2 : bill * 0.15);
+
+// const bills2 = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
+
+// for (let i = 0; i < bills2.length; i++) {
+// 	const tip = calculaterBils(bills2[i]);
+// 	tips.push(tip);
+// 	total.push(bills[i] + tip);
+// }
+
+// const calculaterAvanger = arr => {
+// 	let sum = 0;
+// 	for (let i = 0; i < arr.length; i++) {
+// 		sum += arr[i];
+// 	}
+// 	return sum / arr.length;
+// };
+
+// const data1 = [49, 50, 30];
+// const data2 = [3, 53, 45, 57, 45, 31];
+
+// const weatherChecker = arr => {
+// 	let str = '';
+// 	for (let i = 0; i < arr.length; i++) {
+// 		str = str + `${arr[i]}% handley in ${i + 1} days ...`;
+// 	}
+// 	console.log('... ' + str);
+// };
+
+// weatherChecker(data1);
+
+const game = {
+	team1: 'REAL MADRID',
+	team2: 'BARCELONA',
+	players: [
+		[
+			'Courtois',
+			'Vazquez',
+			'Militao',
+			'Nacho',
+			'Mendy',
+			'Casemiro',
+			'Valverde',
+			'Modrich',
+			'Kroos',
+			'Vinicius',
+			'Benzema',
+		],
+		[
+			'Stegen',
+			'Mingueza',
+			'Araujo',
+			'Lenglet',
+			'Dest',
+			'Busquets',
+			'Jong',
+			'Alba',
+			'Messi',
+			'Pedri',
+			'Dembele',
+		],
+	],
+	score: '2:1',
+	scored: ['Kroos', 'Benzema', 'Mingueza'],
+	date: 'Apr 10th, 2021',
+	odds: {
+		team1: 1.48,
+		draw: 2.53,
+		team2: 4.25,
 	},
 };
 
-const mike = {
-	name: 'Mike',
-	lastname: 'Black',
-	weight: 91,
-	height: 1.93,
-	calculater() {
-		this.bmi = Math.floor(this.weight / this.height ** 2);
+const teamReal = [...game.players[0]];
 
-		return this.bmi;
-	},
-};
+const teamBarsa = [...game.players[1]];
 
-mike.calculater();
-mike.bmi;
+const goalkeeper = teamReal.filter(team => team == teamReal[0]);
 
-jack.calculater();
-jack.bmi;
+const fieldPlayers = teamReal.filter(team => team != teamReal[0]);
 
-if (jack.bmi > mike.bmi) {
-	console.log(
-		`${jack.name} ${jack.lastname} BMI ${jack.bmi} is higher than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`
-	);
-} else {
-	`${jack.name} ${jack.lastname} BMI ${jack.bmi} is lower than ${mike.name} ${mike.lastname} BMI ${mike.bmi}!`;
-}
+const allPlayers = [...game.players[0], ...game.players[1]];
 
-const books = ['1974', '2000', '2005', '1994'];
-const arr2 = [];
+const players1Total = [
+	...game.players[0],
+	'Marcelo',
+	'Isco',
+	'Asensio',
+	'Diaz',
+	'Odriozola',
+];
 
-for (let i = 0; i < books.length; i++) {
-	arr2.push(2023 - books[i]);
-}
+const { team1, draw, team2 } = game.odds;
 
-console.log(arr2);
+console.log(players1Total);
 
-const calculaterBils = bill => (bill < 20 ? bill * 0.2 : bill * 0.15);
+const printGoals = arr => `${arr.toString()} goals ${arr.length}`;
 
-const bills2 = [11, 20, 44, 22, 33, 45, 65, 13, 62, 234, 103];
+console.log(printGoals(game.players[0]));
 
-for (let i = 0; i < bills2.length; i++) {
-	const tip = calculaterBils(bills2[i]);
-	tips.push(tip);
-	total.push(bills[i] + tip);
-}
 
-const calculaterAvanger = arr => {
-	let sum = 0;
-	for (let i = 0; i < arr.length; i++) {
-		sum += arr[i];
-	}
-	return sum / arr.length;
-};
-
-const data1 = [49, 50, 30];
-const data2 = [3, 53, 45, 57, 45, 31];
-
-const weatherChecker = arr => {
-	let str = '';
-	for (let i = 0; i < arr.length; i++) {
-		str = str + `${arr[i]}% handley in ${i + 1} days ...`;
-	}
-	console.log('... ' + str);
-};
-
-weatherChecker(data1);
+team1 < team1 && console.log(`${game.team1} is winner`)
