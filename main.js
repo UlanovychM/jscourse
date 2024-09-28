@@ -2326,13 +2326,15 @@ document.body.append(document.createElement('button'));
 document.querySelector('button').addEventListener('click', () => {
 	const text = document.querySelector('textarea').value;
 	const lines = text.split('\n');
+	const lineCase = [];
 
-	for (const line in lines) {
+	for (const line of lines) {
 		const [first, second] = line.toLowerCase().trim().split('_');
 		const output = `${first}${second.replace(
 			second[0],
 			second[0].toUpperCase()
 		)}`;
+
 		console.log(output);
 	}
 });
