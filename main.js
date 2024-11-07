@@ -2480,44 +2480,123 @@ getAverageHumanAge([7, 3, 2, 4, 1, 15, 8, 1, 9, 2]);
 // 8. Создайте мелкую (shallow) копию массива cats и отсортируйте по свойству рекомендуемая порция еды по возрастанию (имейте в виду,
 //что порции находятся внутри объектов массива).
 
-const cats = [
-	{ catWeight: 3, foodWeight: 20, owners: ['Наташа'] },
-	{ catWeight: 6, foodWeight: 90, owners: ['Марина', 'Алиса'] },
-	{ catWeight: 4, foodWeight: 45, owners: ['Алекс', 'Ирина'] },
-	{ catWeight: 7, foodWeight: 80, owners: ['Борис'] },
-];
+// const cats = [
+// 	{ catWeight: 3, foodWeight: 20, owners: ['Наташа'] },
+// 	{ catWeight: 6, foodWeight: 90, owners: ['Марина', 'Алиса'] },
+// 	{ catWeight: 4, foodWeight: 45, owners: ['Алекс', 'Ирина'] },
+// 	{ catWeight: 7, foodWeight: 80, owners: ['Борис'] },
+// ];
 
-cats.forEach(item => (item.normalDayFood = item.catWeight * 0.75 * 12));
+// cats.forEach(item => (item.normalDayFood = item.catWeight * 0.75 * 12));
 
-const findCat = cats.find(cat => cat.owners.includes('Алекс'));
+// const findCat = cats.find(cat => cat.owners.includes('Алекс'));
 
-console.log(
-	`${findCat.foodWeight > findCat.normalDayFood ? 'Багато' : 'Мало'}`
-);
+// console.log(
+// 	`${findCat.foodWeight > findCat.normalDayFood ? 'Багато' : 'Мало'}`
+// );
 
-const catsEatTooMuchOwners = cats
-	.filter(cat => cat.foodWeight > cat.normalDayFood)
-	.flatMap(cat => cat.owners);
+// const catsEatTooMuchOwners = cats
+// 	.filter(cat => cat.foodWeight > cat.normalDayFood)
+// 	.flatMap(cat => cat.owners);
 
-const catsEatTooLittleOwners = cats
-	.filter(cat => cat.foodWeight < cat.normalDayFood)
-	.flatMap(cat => cat.owners);
-console.log(
-	`${catsEatTooMuchOwners.join(' ')} хозяева кошек, которые едят слишком много!`
-);
-console.log(
-	`${catsEatTooLittleOwners.join(
-		' '
-	)} хозяева кошек, которые едят слишком мало!`
-);
+// const catsEatTooLittleOwners = cats
+// 	.filter(cat => cat.foodWeight < cat.normalDayFood)
+// 	.flatMap(cat => cat.owners);
+// console.log(
+// 	`${catsEatTooMuchOwners.join(' ')} хозяева кошек, которые едят слишком много!`
+// );
+// console.log(
+// 	`${catsEatTooLittleOwners.join(
+// 		' '
+// 	)} хозяева кошек, которые едят слишком мало!`
+// );
 
-console.log(cats.some(cat => cat.foodWeight === cat.normalDayFood));
-const normalFoodWaith = cat =>
-	cat.foodWeight > cat.normalDayFood * 0.9 &&
-	cat.foodWeight < cat.normalDayFood * 1.1;
+// console.log(cats.some(cat => cat.foodWeight === cat.normalDayFood));
+// const normalFoodWaith = cat =>
+// 	cat.foodWeight > cat.normalDayFood * 0.9 &&
+// 	cat.foodWeight < cat.normalDayFood * 1.1;
 
-console.log(cats.some(normalFoodWaith));
+// console.log(cats.some(normalFoodWaith));
 
-console.log(cats.filter(normalFoodWaith));
+// console.log(cats.filter(normalFoodWaith));
 
-const catsCopy = cats.slice().sort((x, y) => x.normalDayFood - y.normalDayFood);
+// const catsCopy = cats.slice().sort((x, y) => x.normalDayFood - y.normalDayFood);
+
+// console.log(Number.parseInt('20%', 10));
+
+// const Person = function (firstName, lastName) {
+// 	this.firstName = firstName;
+// 	this.lastName = lastName;
+// };
+
+// const andriy = new Person('Andriy', 'Zhadans');
+// 1. Используйте функцию-конструктор, чтобы реализовать автомобиль - Car. Автомобиль имеет свойства name и speed. Свойство speed -
+// это текущая скорость автомобиля в км / ч.
+// 2. Реализуйте метод accelerate(), который увеличивает скорость автомобиля на 5 и записывает новую скорость в консоль.
+// 3. Реализуйте метод break(), который снижает скорость автомобиля на 5 и записывает новую скорость в консоль.
+// 4. Создайте 2 объекта Car и поэкспериментируйте с вызовами методов accelerate() и break() несколько раз для каждого из них.
+
+// Тестовые данные:
+// Данные для автомобиля 1: Honda едет со скоростью 120 км / ч
+// Данные для автомобиля 2: BMW едет со скоростью 150 км / ч.
+
+// const Car = function (name, speed) {
+// 	this.name = name;
+// 	this.speed = speed;
+// };
+
+// Car.prototype.accelerate = function () {
+// 	this.speed += 5;
+
+// 	console.log(`${this.name} have speed ${this.speed}Km/h`);
+// };
+
+// Car.prototype.break = function () {
+// 	this.speed -= 5;
+
+// 	console.log(`${this.name} have speed ${this.speed}Km/h`);
+// };
+
+// const honda = new Car('honda', 120)
+
+// const bmw = new Car('bmw', 150)
+
+// honda.accelerate()
+
+class Person {
+	constructor(firsName, lastName, age) {
+		this.firsName = firsName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+
+	pritAge() {
+		console.log(2024 - this.age);
+	}
+
+	get age() {
+		return 2021 - this.age;
+	}
+
+	set fullNames(personName) {
+		if (personName.includes(' ')) {
+			this.fullName = personName;
+		} else {
+			alert('error');
+		}
+	}
+
+	get fullNames() {
+		return this.fullName;
+	}
+}
+
+//
+Person.prototype.hiveFive = function () {
+	console.log('hi');
+};
+
+//to class
+Person.hiveFive = function () {
+	console.log('hi');
+};
