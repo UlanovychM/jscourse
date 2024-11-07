@@ -2600,3 +2600,24 @@ Person.prototype.hiveFive = function () {
 Person.hiveFive = function () {
 	console.log('hi');
 };
+
+const personProto = {
+	pritAge() {
+		console.log(2024 - this.age);
+	},
+	initPerson(firsName, age) {
+		this.firsName = firsName;
+		this.age = age;
+	},
+};
+
+const din = Object.create(personProto);
+
+din.name = 'Din';
+din.age = 2000;
+
+console.log(Object.getPrototypeOf(din) === personProto);
+
+const jes = Object.create(personProto);
+jes.initPerson('Jane', 2000);
+jes.pritAge();
