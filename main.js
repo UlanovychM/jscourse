@@ -2621,3 +2621,35 @@ console.log(Object.getPrototypeOf(din) === personProto);
 const jes = Object.create(personProto);
 jes.initPerson('Jane', 2000);
 jes.pritAge();
+
+class Car {
+	constructor(name, speed) {
+		this.name = name;
+		this.speed = speed;
+	}
+
+	get speedMph() {
+		return this.speed / 1.6;
+	}
+
+	set speedMph(speed) {
+		this.speed = speed * 1.6;
+	}
+
+	accelerate() {
+		this.speed += 5;
+
+		console.log(`${this.name} have speed ${this.speed}Km/h`);
+	}
+	break() {
+		this.speed -= 5;
+
+		console.log(`${this.name} have speed ${this.speed}Km/h`);
+	}
+}
+
+const honda = new Car('honda', 120);
+
+// const bmw = new Car('bmw', 150);
+
+console.log(honda.speedMph);
